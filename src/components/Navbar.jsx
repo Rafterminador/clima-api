@@ -1,7 +1,13 @@
 import React from 'react'
 import icon from '../images/icon.png'
-import getData from '../utils/getData'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
+    let navigate = useNavigate();
+    function handleChange() {
+        const text = document.getElementById("text")
+        navigate(`/${text.value}`);
+        text.value = ""
+    }
     return (
         <nav className="text-gray-600 body-font mb-8">
             <div className="container flex md:justify-between flex-col md:flex-row">
@@ -17,11 +23,6 @@ const Navbar = () => {
         </nav >
     )
 }
-function handleChange() {
-    let text = document.getElementById("text")
-    let data = getData(text.value)
-    text.value = ""
-    console.log(data)
-}
+
 
 export default Navbar
